@@ -14,8 +14,8 @@ const theme = extendTheme({
   styles: {
     global: {
       "html, body": {
-        bg: "#302329",
-        color:"#fff"
+        bg: "#0f0c29",
+        color: "#fff"
       },
     },
   },
@@ -23,11 +23,11 @@ const theme = extendTheme({
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
+
+  <ChakraProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-    </ChakraProvider>
-  </React.StrictMode>
+  </ChakraProvider>
+
 )
