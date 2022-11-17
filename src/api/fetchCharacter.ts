@@ -15,9 +15,17 @@ export type Character = {
   url: string;
 };
 
+export type CharacterResponse = {
+  data: Character[];
+  count: number;
+  totalPages: number;
+  nextPage: string | null;
+  previousPage:  string | null;
+};
+
 export const fetchCharacter = async () => {
   try {
-    const { data } = await axios.get<Character>(`${BASE_URL}/characters`);
+    const { data } = await axios.get<CharacterResponse>(`${BASE_URL}/characters?page=${1}`);
     return data;
   } catch (error) {
     console.log("Character fetch error:", error);
