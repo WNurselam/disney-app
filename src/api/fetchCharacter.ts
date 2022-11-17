@@ -23,7 +23,7 @@ export type CharacterResponse = {
   previousPage:  string | null;
 };
 
-export const fetchCharacter = async () => {
+export const fetchCharacter = async (pageParam:number) => {
   try {
     const { data } = await axios.get<CharacterResponse>(`${BASE_URL}/characters?page=${1}`);
     return data;
