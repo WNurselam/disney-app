@@ -1,11 +1,13 @@
 import { fetchCharacter } from "./api/fetchCharacter"
 import { useQuery, useInfiniteQuery } from "react-query"
-import { Flex, Text, Center, Grid, Button, Box, chakra } from "@chakra-ui/react"
+import { Flex, Text, Center, Grid, Button, Box, chakra, Skeleton } from "@chakra-ui/react"
 import CharacterCard from "./components/CharacterCard"
 
+import { useInView } from "react-intersection-observer";
 
 
 function App() {
+
   const {
     data,
     fetchNextPage,
@@ -21,9 +23,21 @@ function App() {
     },
   });
 
-  console.log(data);
+  const { ref } = useInView({
+    threshold: 0.5,
+    onChange(inView) {
+      if (inView) hasNextPage && fetchNextPage();
+    },
+  });
+
+
+  //console.log(data);
+  console.log(hasNextPage, data);
   return (
-    <Center>
+    isLoading ? (
+      <Text>loading...</Text>
+    ) :
+    <Center>   
       <Flex
         direction="column"
         gap={4}
@@ -35,6 +49,16 @@ function App() {
             )
           )
         }
+        <Text
+          ref={ref}
+        >
+          {isFetchingNextPage
+            ? 'Loading more...'
+            : hasNextPage
+              ? 'Load More'
+              : 'Nothing more to load'}
+        </Text>
+        <Text>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</Text>
       </Flex>
     </Center>
   )

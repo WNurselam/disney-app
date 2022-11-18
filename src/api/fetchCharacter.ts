@@ -25,7 +25,7 @@ export type CharacterResponse = {
 
 export const fetchCharacter = async (pageParam:number) => {
   try {
-    const { data } = await axios.get<CharacterResponse>(`${BASE_URL}/characters?page=${1}`);
+    const { data } = await axios.get<CharacterResponse>(`${BASE_URL}/characters?pageParam=${pageParam}`);
     return data;
   } catch (error) {
     console.log("Character fetch error:", error);

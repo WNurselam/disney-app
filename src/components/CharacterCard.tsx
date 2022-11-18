@@ -1,7 +1,8 @@
 import React from 'react'
 import type { Character } from '../api/fetchCharacter';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {LazyLoadImage} from  'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useEffect } from "react";
 
 import {
     Flex,
@@ -16,13 +17,20 @@ import {
 } from "@chakra-ui/react";
 
 type Props = {
-    character: Character;
+    character: Character;  
 };
 
-const CharacterCard = ({ character }: Props) => {
+
+const CharacterCard = ({ character}: Props) => {
     return (
-        <Flex>
-            <LazyLoadImage 
+        <Flex
+        direction="row"
+        justify="space-between"
+        align="center"
+        gap={1}
+        border={1}
+        >
+            <LazyLoadImage
                 src={character.imageUrl}
                 alt={`image of ${character.name}`}
                 width="220px"
@@ -32,6 +40,7 @@ const CharacterCard = ({ character }: Props) => {
                     flex: "2 1 0%",
                 }}
             />
+            <Text>{character.name}</Text>
         </Flex>
     )
 }
