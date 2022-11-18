@@ -20,13 +20,20 @@ export type CharacterResponse = {
   count: number;
   totalPages: number;
   nextPage: string | null;
-  previousPage:  string | null;
+  previousPage: string | null;
 };
 
-export const fetchCharacter = async (pageParam:number) => {
+export const fetchCharacter = async (pageParam: number) => {
   try {
-    const { data } = await axios.get<CharacterResponse>(`${BASE_URL}/characters?pageParam=${pageParam}`);
-    return data;
+    if (!pageParam) {
+      const { data } = await axios.get<CharacterResponse>(
+        `${BASE_URL}/characters?pageParam=${1}`
+      );
+      return data;
+    } else {
+      const { data } = await axios.get<CharacterResponse>(`${pageParam}`);
+      return data;
+    }
   } catch (error) {
     console.log("Character fetch error:", error);
   }

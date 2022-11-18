@@ -14,18 +14,19 @@ import {
     Button,
     Square,
     Center,
+    OrderedList,
 } from "@chakra-ui/react";
 
 type Props = {
     character: Character;  
 };
 
-
 const CharacterCard = ({ character}: Props) => {
+
+   console.log(character);
     return (
         <Flex
         direction="row"
-        justify="space-between"
         align="center"
         gap={1}
         border={1}
@@ -33,14 +34,18 @@ const CharacterCard = ({ character}: Props) => {
             <LazyLoadImage
                 src={character.imageUrl}
                 alt={`image of ${character.name}`}
-                width="220px"
-                height="220px"
                 effect="blur"
                 style={{
                     flex: "2 1 0%",
                 }}
             />
             <Text>{character.name}</Text>
+
+            <OrderedList>
+                
+            </OrderedList>
+
+            
         </Flex>
     )
 }

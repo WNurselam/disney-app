@@ -29,10 +29,6 @@ function App() {
       if (inView) hasNextPage && fetchNextPage();
     },
   });
-
-
-  //console.log(data);
-  console.log(hasNextPage, data);
   return (
     isLoading ? (
       <Text>loading...</Text>
