@@ -1,13 +1,10 @@
-import { fetchCharacter } from "./api/fetchCharacter"
-import { useQuery, useInfiniteQuery } from "react-query"
-import { Flex, Text, Center, Grid, Button, Box, chakra, Skeleton } from "@chakra-ui/react"
-import CharacterCard from "./components/CharacterCard"
-
+import { fetchCharacter } from "./api/fetchCharacter";
+import { useQuery, useInfiniteQuery } from "react-query";
+import { Flex, Text, Center, Grid} from "@chakra-ui/react";
+import CharacterCard from "./components/CharacterCard";
 import { useInView } from "react-intersection-observer";
 
-
 function App() {
-
   const {
     data,
     fetchNextPage,
@@ -29,35 +26,34 @@ function App() {
       if (inView) hasNextPage && fetchNextPage();
     },
   });
+
   return (
-    isLoading ? (
-      <Text>loading...</Text>
-    ) :
-    <Center>   
-      <Flex
-        direction="column"
-        gap={4}
-      >
-        {
-          data?.pages.map((page) =>
-            page?.data.map((character, index) =>
-              <CharacterCard character={character} key={index} />
-            )
-          )
-        }
-        <Text
-          ref={ref}
-        >
+    <Center mt="3rem" px="1rem" flexDirection="column" gap="1rem">
+      <Flex direction="column" >
+        <Grid  templateColumns={[
+                "repeat(1, 1fr)",
+                "repeat(1, 1fr)",
+                "repeat(2, 1fr)",
+                "repeat(2, 1fr)",
+              ]}
+              gap={6}>
+        {data?.pages.map((page) =>
+          page?.data.map((character, index) => (
+            <CharacterCard character={character} key={index} />
+          ))
+        )}
+        <Text ref={ref}>
           {isFetchingNextPage
-            ? 'Loading more...'
+            ? "Fetching more characters..."
             : hasNextPage
-              ? 'Load More'
-              : 'Nothing more to load'}
+              ? "Load More"
+              : "Nothing more to load"}
         </Text>
-        <Text>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</Text>
+        <Text>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</Text>
+        </Grid>
       </Flex>
     </Center>
-  )
+  );
 }
 
-export default App
+export default App;
