@@ -34,13 +34,13 @@ function App() {
   if (isLoading) {
     return (
       <Center mt="3rem">
-        <Grid templateColumns="repeat(2, 1fr)" gap={3}>
-          <Skeleton w="600px" height="220px" border="8px" />
-          <Skeleton w="600px" height="220px" border="8px" />
-          <Skeleton w="600px" height="220px" border="8px" />
-          <Skeleton w="600px" height="220px" border="8px" />
-          <Skeleton w="600px" height="220px" border="8px" />
-          <Skeleton w="600px" height="220px" border="8px" />
+        <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+          <Skeleton w="600px" height="220px" border="6px" />
+          <Skeleton w="600px" height="220px" border="6px" />
+          <Skeleton w="600px" height="220px" border="6px" />
+          <Skeleton w="600px" height="220px" border="6px" />
+          <Skeleton w="600px" height="220px" border="6px" />
+          <Skeleton w="600px" height="220px" border="6px" />
         </Grid>
       </Center>
     );
@@ -48,14 +48,18 @@ function App() {
 
   return (
     <Center mt="3rem" px="1rem" flexDirection="column" gap="1rem">
-      <Flex direction="column" >
+      <Flex direction="column" 
+        gap="10px"
+        border="2px solid #718f9b"
+        p="1rem"
+        borderRadius="0.5rem"  >
         <Grid templateColumns={[
           "repeat(1, 1fr)",
           "repeat(1, 1fr)",
           "repeat(2, 1fr)",
           "repeat(2, 1fr)",
         ]}
-          gap={6}>
+          gap={7}>
           {data?.pages.map((page) =>
             page?.data.map((character, index) => (
               <CharacterCard character={character} key={index} callBack={callBack} />

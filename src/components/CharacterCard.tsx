@@ -91,21 +91,7 @@ const CharacterCard = ({ character, callBack }: Props) => {
         </Flex>
     );
 };
-
 export default CharacterCard;
 
-/*
-<List spacing={3}>
-                <Text m={4} color="whatsapp.400" fontSize="1.3rem" fontWeight="600">{character.name}</Text>
-                {character.films.length > 0 ?
-                    character.films.slice(0, 3).map((film: string) => (
-                        <ListItem>
-                            <ListIcon as={CheckCircleIcon} color="green.500" />
-                            {film}
-                        </ListItem>
-                    )) : <HStack><Text>Nothing films</Text>   <ListIcon as={WarningTwoIcon} color="green.500" /></HStack>
-                }
-            </List>
-*/
 
 
