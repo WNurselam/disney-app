@@ -7,4 +7,4 @@
 - React Lazy Load Image
 - Using Skeleton with Chakra UI
 
-See Live  [Here](disney-character-app.vercel.app)
+### See Live  [Here](disney-character-app.vercel.app)
