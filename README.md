@@ -1,1 +1,3 @@
-# Vite + React + TS
+# Disney Character App
+- Vite + React + TS + Chakra UI
+
