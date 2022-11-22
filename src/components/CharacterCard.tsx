@@ -2,16 +2,12 @@ import React from "react";
 import type { Character } from "../api/fetchCharacter";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { CheckCircleIcon, WarningTwoIcon } from "@chakra-ui/icons";
 import { useEffect } from 'react'
 
 
 import {
     Flex,
     Text,
-    ListItem,
-    List,
-    ListIcon,
     HStack,
     Skeleton,
     VStack,
@@ -20,15 +16,12 @@ import {
 
 type Props = {
     character: Character;
-    callBack: (randomNumber: number) => void;
+   
 };
 
-const CharacterCard = ({ character, callBack }: Props) => {
+const CharacterCard = ({ character}: Props) => {
 
-    useEffect(() => {
-        callBack(1)
-    }, [])
-
+   
 
     if (!character) {
         return (

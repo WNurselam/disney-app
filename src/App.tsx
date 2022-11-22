@@ -1,12 +1,10 @@
 import { fetchCharacter } from "./api/fetchCharacter";
 import { useQuery, useInfiniteQuery } from "react-query";
-import { useCallback, useState } from "react";
 import { Flex, Text, Center, Grid, Skeleton } from "@chakra-ui/react";
 import CharacterCard from "./components/CharacterCard";
 import { useInView } from "react-intersection-observer";
 
 function App() {
-  const [number, setNumber] = useState(0)
   const {
     data,
     fetchNextPage,
@@ -22,7 +20,6 @@ function App() {
     },
   });
 
-  const callBack = (randomNuber: number) => setNumber(randomNuber);
 
   const { ref } = useInView({
     threshold: 0.5,
@@ -62,7 +59,7 @@ function App() {
           gap={7}>
           {data?.pages.map((page) =>
             page?.data.map((character, index) => (
-              <CharacterCard character={character} key={index} callBack={callBack} />
+              <CharacterCard character={character} key={index} />
             ))
           )}
           <Text ref={ref}>
