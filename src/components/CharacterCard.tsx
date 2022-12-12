@@ -44,7 +44,7 @@ const CharacterCard = ({ character}: Props) => {
             height="220px"
             bg="#120f34"
         >
-            <Text p={5} verticalAlign="middle">
+           
                 <LazyLoadImage
                     src={character.imageUrl}
                     alt={`image of ${character.name}`}
@@ -53,9 +53,11 @@ const CharacterCard = ({ character}: Props) => {
                     height="220"
                     style={{
                         flex: "2 1 0%",
+                        width: "220px",
+                        height: "220px"
                     }}
                     
-                />
+               
             </Text>
             <VStack flex="3 1 0%" p="1rem"  alignItems="flex-start">
             <Text   fontSize="1.3rem" fontWeight="600">{character.name}</Text>
