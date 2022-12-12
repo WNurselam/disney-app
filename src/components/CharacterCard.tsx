@@ -2,7 +2,6 @@ import React from "react";
 import type { Character } from "../api/fetchCharacter";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { useEffect } from 'react'
 
 
 import {
@@ -11,15 +10,16 @@ import {
     HStack,
     Skeleton,
     VStack,
-    Box
+    Box,
+    border
 } from "@chakra-ui/react";
 
 type Props = {
     character: Character;
-   
+
 };
 
-const CharacterCard = ({ character}: Props) => {
+const CharacterCard = ({ character }: Props) => {
 
     if (!character) {
         return (
@@ -46,38 +46,38 @@ const CharacterCard = ({ character}: Props) => {
             height="220px"
             bg="#120f34"
         >
-            <Text p={5} verticalAlign="middle">
-                <LazyLoadImage
-                    src={character.imageUrl}
-                    alt={`image of ${character.name}`}
-                    effect="blur"
-                    width="220"
-                    height="220"
-                    style={{
-                        flex: "2 1 0%",
-                    }}
-                    
-                />
-            </Text>
-            <VStack flex="3 1 0%" p="1rem"  alignItems="flex-start">
-            <Text   fontSize="1.3rem" fontWeight="600">{character.name}</Text>
-            <HStack>
+            <LazyLoadImage
+                src={character.imageUrl}
+                alt={`image of ${character.name}`}
+                effect="blur"
+                width="220"
+                height="220"
+                style={{
+                    flex: "2 1 0%",
+                    width: "220px",
+                    height: "220px",
+                }}
+
+            />
+            <VStack flex="3 1 0%" p="1rem" alignItems="flex-start">
+                <Text fontSize="1.3rem" fontWeight="600">{character.name}</Text>
+                <HStack>
+                    <Box>
+                        <Text>
+                            <Text color="rgb(158, 158, 158)">Film:</Text>
+                            {
+                                character.films.length > 0 ? character.films[0] : <Text color="whatsapp.400">Nothing films</Text>
+                            }</Text>
+                    </Box>
+                </HStack>
                 <Box>
                     <Text>
-                    <Text color="rgb(158, 158, 158)">Film:</Text>
-                    {
-                        character.films.length > 0 ? character.films[0]:<Text color="whatsapp.400">Nothing films</Text>
-                    }</Text>
+                        <Text color="rgb(158, 158, 158)">Tv Show:</Text>
+                        {
+                            character.tvShows.length > 0 ? character.tvShows[0] : <Text color="whatsapp.400"> Nothing Tv Show</Text>
+                        }
+                    </Text>
                 </Box>
-            </HStack>
-            <Box>
-                <Text>
-                <Text color="rgb(158, 158, 158)">Tv Show:</Text>
-                    {
-                        character.tvShows.length > 0 ? character.tvShows[0] :<Text color="whatsapp.400"> Nothing Tv Show</Text>
-                    }
-                </Text>
-            </Box>
             </VStack>
         </Flex>
     );
