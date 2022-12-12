@@ -4,7 +4,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useEffect } from 'react'
 
-
 import {
     Flex,
     Text,
@@ -20,9 +19,6 @@ type Props = {
 };
 
 const CharacterCard = ({ character}: Props) => {
-
-   
-
     if (!character) {
         return (
             <Skeleton>
